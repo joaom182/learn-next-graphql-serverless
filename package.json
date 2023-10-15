@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"yarn codegen --watch \"./src/**/*.gql\"\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.5",
     "@apollo/server": "^4.9.1",
     "@as-integrations/next": "^2.0.1",
     "@types/node": "20.4.8",
@@ -28,5 +30,13 @@
     "tailwindcss": "3.3.3",
     "type-graphql": "2.0.0-beta.2",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.0.0",
+    "@graphql-codegen/typescript-type-graphql": "^3.0.0",
+    "concurrently": "^8.2.0"
   }
 }
